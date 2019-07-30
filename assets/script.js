@@ -20,6 +20,7 @@ $(document).ready(function () {
     const apiKey = "A4S5DC01lXDXTlrU4Kb7hPJR2SnkFgME"
 
     btnSearch.on("click", (event) => {
+        docArticles.empty();
 
         event.preventDefault();
 
@@ -74,12 +75,16 @@ $(document).ready(function () {
 function UpdatePage(apiData, numArticles, docArticles) {
     let articleArray = apiData.response.docs;
     for (let i = 0; i < numArticles; i++) {
-        let articleElement = $("<div>");
-        let articleTitle = $("<h2>").addClass("title").text(articleArray[i].headline.main);
-        let byline = $("<h4>").addClass("byline").text(articleArray[i].byline.original);
-        let web_url = $('<a>').addClass("web_url").attr("href", articleArray[i].web_url).text("Go to article");
+        let articleElement = $("<div>").addClass("article col-md-11");
+        let titleBlock = $("<div>").addClass("col-md-12 text-center titleBlock")
+        let articleTitle = $("<h3>").addClass("title").text(`${i+1}: ${articleArray[i].headline.main}`);
+        let byline = $("<h6>").addClass("byline").text(articleArray[i].byline.original);
         let snippet = $("<h5>").addClass("snippet").text(articleArray[i].snippet);
-        articleElement.append(articleTitle, byline, snippet, web_url);
+        let linkBlock = $("<div>").addClass("link col-md-12 text-right");
+        let web_url = $('<a>').addClass("web_url btn btn-primary").attr("href", articleArray[i].web_url).text("Go to article");
+        linkBlock.append(web_url);
+        titleBlock.append(articleTitle)
+        articleElement.append(titleBlock, byline, snippet, linkBlock);
         docArticles.append(articleElement);
     }
     ;

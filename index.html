@@ -6,6 +6,7 @@
     <title>NY Search </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -16,40 +17,60 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="title">NY Search</h1>
+            <div class="col-md-12 text-center align-center shadow" id="header">
+                <h1 class="title display-2">New York Times <br> Article Search</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <form id="form">
-                    <label>Search Term:</label>
-                    <input id="searchTerm" type="text">
-                    <label>number of records to retrieve</label>
-                    <select id="numArticles">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="startYear">Start Year (optional)</label>
-                    <input type="date" class="" id="startYear" >
-                    <label for="endYear">End Year (optional)</label>
-                    <input type="date" id="endYear">
-                    <button id="search">Search</button>
-                    <button id="clear">Clear Results</button>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <label>Search Term:</label>
+                            <input id="searchTerm" type="text">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Display:</label>
+                            <select id="numArticles">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected>5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 date">
+                            <label for="startYear">Start Year (optional)</label>
+                            <input type="date" class="" id="startYear">
+                        </div>
+                        <div class="col-md-6 date">
+                            <label for="endYear">End Year (optional)</label>
+                            <input type="date" id="endYear">
+                        </div>
+                    </div>
+
+
+                    <div class="row" id="btns">
+                        <div class="col-md-6 submitBTN"><button id="search" class="btn btn-primary">Search</button>
+                        </div>
+                        <div class="col-md-6 clearBtn"><button id="clear" class="btn btn-primary">Clear Results</button>
+                        </div>
+                    </div>
+
+
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h3>Top Articles</h3>
+                <h3 id="TArt">Top Articles</h3>
             </div>
             <div id="articles"></div>
         </div>

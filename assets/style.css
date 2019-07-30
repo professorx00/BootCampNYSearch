@@ -2,3 +2,47 @@
     display: flex;
     flex-direction: column;
 }
+div.article{
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px black solid;
+}
+
+a.web_url{
+    text-align: right;
+    background: rgb(84, 184, 184);
+}
+div.titleBlock{
+    font-family: 'Cinzel', serif;
+    background: lightgrey;
+    border: 1px black solid;
+}
+#TArt{
+    font-size: 1.5rem;
+    margin: 1rem;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+}
+
+#search{
+    width: 100%;
+    margin: 1rem;
+}
+#clear{
+    width: 100%;
+    margin: 1rem;
+}
+div.date{
+    margin-top: 1rem;
+    align-content: center;
+}
+#searchTerm{
+    width: 80%;
+}
+#header{
+    font-family: 'Cinzel', serif;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background: rgb(31, 219, 219);
+    border: 1px solid black;
+}
