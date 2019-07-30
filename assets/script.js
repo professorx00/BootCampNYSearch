@@ -12,6 +12,10 @@ $(document).ready(function () {
     let input = "";
     let url = "";
 
+    function convertYear(year){
+        let yearArray = year.split("-");
+        return(yearArray.join(""));
+    }
 
     const apiKey = "A4S5DC01lXDXTlrU4Kb7hPJR2SnkFgME"
 
@@ -24,10 +28,13 @@ $(document).ready(function () {
         //grab startYear and endYear input vals        
         let startYear = docStartYear.val();
         let endYear = docEndYear.val();
+        startYear = convertYear(startYear);
+        endYear = convertYear(endYear);
+
 
         numArticles = docNumArticles.val();
 
-        url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${input}&api-key=${apiKey}`
+        url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${input}&api-key=${apiKey}&begin_date=${startYear}&end_date=${endYear}`
 
         $.get(url, function () {
 
