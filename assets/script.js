@@ -33,9 +33,13 @@ $(document).ready(function () {
 
 
         numArticles = docNumArticles.val();
-
-        url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${input}&api-key=${apiKey}&begin_date=${startYear}&end_date=${endYear}`
-
+        if(startYear!="" && endYear!=""){
+            url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${input}&api-key=${apiKey}&begin_date=${startYear}&end_date=${endYear}`
+        }
+        else{
+            url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${input}&api-key=${apiKey}`
+        }
+        
         $.get(url, function () {
 
         }).then(function (apiData) {
@@ -57,7 +61,12 @@ $(document).ready(function () {
         });
 
     })
+    btnClear.on("click",()=>{
+        docInput.attr("value","");
+        docArticles.empty();
 
+
+    })
 
     //TODO:
 
