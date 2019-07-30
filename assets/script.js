@@ -6,7 +6,7 @@ $(document).ready(function () {
     const btnSearch = $("#search");
     const btnClear = $("#clear");
     const docNumArticles = $("#numArticles");
-    
+
     let numArticles = 5;
 
     let input = "";
@@ -16,7 +16,7 @@ $(document).ready(function () {
     const apiKey = "A4S5DC01lXDXTlrU4Kb7hPJR2SnkFgME"
 
     btnSearch.on("click", (event) => {
-        
+
         event.preventDefault();
 
         input = docInput.val();
@@ -30,15 +30,21 @@ $(document).ready(function () {
         url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${input}&api-key=${apiKey}`
 
         $.get(url, function () {
-    
+
         }).then(function (apiData) {
             let articleArray = apiData.response.docs;
             console.log(articleArray);
-            for( let i = 0; i < numArticles; i++) {
+            for (let i = 0; i < numArticles; i++) {
 
                 let articleElement = $("<div>");
                 let articleTitle = $("<h2>").addClass("title").text(articleArray[i].headline.main);
-                articleElement.append(articleTitle);
+                let byline = $("<h4>").addClass("byline").text(articleArray[i].byline.original);
+                let web_url = $('<a>').addClass("web_url").attr("href", articleArray[i].web_url).text("Go to article");
+                let snippet = $("<h5>").addClass("snippet").text(articleArray[i].snippet);
+
+
+
+                articleElement.append(articleTitle, byline, snippet, web_url);
                 docArticles.append(articleElement);
             };
         });
